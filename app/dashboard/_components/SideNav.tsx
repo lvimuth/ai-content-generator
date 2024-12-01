@@ -38,6 +38,7 @@ function SideNav() {
       <div className="mt-10">
         {MenuList.map((menu, index) => (
           <div
+            key={index}
             className={`flex gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer transition-all items-center ${
               path == menu.path && "bg-primary text-white"
             }`}
