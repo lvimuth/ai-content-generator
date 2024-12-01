@@ -9,7 +9,10 @@ export default {
   ],
   theme: {
   	extend: {
-  		colors: {
+		  colors: {
+			gradient1: '#071952',
+			gradient2: '#088395',
+			gradient3:'#EBF4F6',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

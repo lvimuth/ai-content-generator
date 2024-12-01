@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import SearchSection from "./_components/SearchSection";
+import TemplateList from "./_components/TemplateList";
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
-  )
+    <div>
+      {/* Search Section */}
+      <SearchSection />
+
+      {/* Template List Section */}
+      <TemplateList />
+    </div>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
