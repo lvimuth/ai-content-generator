@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { TEMPLATE } from "../../_components/TemplateList";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
@@ -8,12 +8,20 @@ import { Button } from "@/components/ui/button";
 
 interface PROPS {
   selectedTemplate: TEMPLATE;
+  userFormInput: any;
 }
 
-function FormSection({ selectedTemplate }: PROPS) {
+function FormSection({ selectedTemplate,userFormInput }: PROPS) {
+  const [formData, setFormData] = useState<any>();
   const onSubmit = (e: any) => {
     e.preventDefault();
+    userFormInput(formData);
   };
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <div className="p-5 shadow-lg border rounded-xl bg-white">
       <Image src={selectedTemplate?.icon} alt="" width={70} height={70} />
@@ -28,9 +36,17 @@ function FormSection({ selectedTemplate }: PROPS) {
               {item.label}
             </label>
             {item.field == "input" ? (
-              <Input />
+              <Input
+                name={item.name}
+                required={item.required}
+                onChange={handleInputChange}
+              />
             ) : item.field == "textarea" ? (
-              <Textarea />
+              <Textarea
+                name={item.name}
+                required={item.required}
+                onChange={handleInputChange}
+              />
             ) : null}
           </div>
         ))}
