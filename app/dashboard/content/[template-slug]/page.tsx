@@ -27,7 +27,9 @@ function CreateNewContent(props: PROPS) {
       </div>
     );
   }
-  const GenerateAIContent = (formData: any) => {};
+  const GenerateAIContent = (formData: any) => {
+    
+  };
   return (
     <div className="p-4">
       <Link href={"/dashboard"}>
