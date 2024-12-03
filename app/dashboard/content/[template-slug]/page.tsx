@@ -36,7 +36,7 @@ function CreateNewContent(props: PROPS) {
     const FinalAIPrompt = JSON.stringify(formData) + ", " + SelectedPrompt;
     const result = await chatSession?.sendMessage(FinalAIPrompt);
 
-    setAIOutput(result?.response.text());
+    setAIOutput( await result?.response.text());
     setLoading(false);
   };
   return (
