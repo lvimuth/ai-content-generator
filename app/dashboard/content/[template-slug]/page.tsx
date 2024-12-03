@@ -14,6 +14,7 @@ import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { useRouter } from "next/navigation";
+import { UpdateCreditUsageContext } from "@/app/(context)/UpdateCreditUsageContext";
 
 interface PROPS {
   params: {
@@ -26,6 +27,9 @@ function CreateNewContent(props: PROPS) {
   const [aiOutput, setAIOutput] = useState<string>();
   const { user } = useUser();
   const router = useRouter();
+  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
+    UpdateCreditUsageContext
+  );
   const selectedTemplate: TEMPLATE | undefined = templates?.find(
     (item) => item.slug == props?.params["template-slug"]
   );
@@ -57,6 +61,7 @@ function CreateNewContent(props: PROPS) {
       result?.response.text()
     );
     setLoading(false);
+    setUpdateCreditUsage(Date.now());
   };
 
   const SaveInDB = async (formData: any, slug: any, aiOutput: string) => {

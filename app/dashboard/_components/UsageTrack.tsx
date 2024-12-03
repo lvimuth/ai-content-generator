@@ -7,15 +7,23 @@ import { eq } from "drizzle-orm";
 import React, { useContext, useEffect, useState } from "react";
 import { HISTORY } from "../history/page";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import { UpdateCreditUsageContext } from "@/app/(context)/UpdateCreditUsageContext";
 
 function UsageTrack() {
   const { user } = useUser();
+  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
+    UpdateCreditUsageContext
+  );
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
 
   useEffect(() => {
     user && GetData();
     // result && GetTotalUsage();
   }, [user]);
+
+  useEffect(() => {
+    user && GetData();
+  }, [updateCreditUsage && user]);
 
   const GetData = async () => {
     {
