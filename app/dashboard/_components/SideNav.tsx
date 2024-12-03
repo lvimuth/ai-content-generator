@@ -1,5 +1,5 @@
 "use client";
-import { History, Home, Settings, WalletCards } from "lucide-react";
+import { History, Home, Settings, Sparkles, WalletCards } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,13 +33,16 @@ function SideNav() {
   ];
   return (
     <div className="h-screen relative p-5 shadow-sm border bg-white">
-      <div className="flex justify-center ">
-        <Image src={"/logo.svg"} alt="logo" width={"120"} height={"80"} />
-      </div>
+      <Link href={"/"}>
+        <div className="flex items-center">
+          <Sparkles className="mr-2 text-yellow-500" />
+          <h1 className="text-2xl font-bold text-gray-800">AI Generator</h1>
+        </div>
+      </Link>
       <hr className="my-4" />
       <div className="mt-10">
         {MenuList.map((menu, index) => (
-          <Link key={index} href={menu.path} >
+          <Link key={index} href={menu.path}>
             <div
               className={`flex gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer transition-all items-center ${
                 path == menu.path && "bg-primary text-white"
