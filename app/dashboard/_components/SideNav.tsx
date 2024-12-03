@@ -36,7 +36,7 @@ function SideNav() {
       <Link href={"/"}>
         <div className="flex items-center">
           <Sparkles className="mr-2 text-yellow-500" />
-          <h1 className="text-2xl font-bold text-gray-800">AI Generator</h1>
+          <h1 className="text-2xl font-bold text-primary">AI Generator</h1>
         </div>
       </Link>
       <hr className="my-4" />
