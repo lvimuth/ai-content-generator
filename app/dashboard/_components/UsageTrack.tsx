@@ -10,8 +10,7 @@ import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 
 function UsageTrack() {
   const { user } = useUser();
-  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext)
-
+  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
 
   useEffect(() => {
     user && GetData();
@@ -22,10 +21,11 @@ function UsageTrack() {
     {
       /*@ts-ignore */
     }
+    const emailAddress = user?.primaryEmailAddress?.emailAddress || "";
     const result: HISTORY[] = await db
       .select()
       .from(AIOutput)
-      .where(eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress));
+      .where(eq(AIOutput?.createdBy, emailAddress));
     GetTotalUsage(result);
   };
 

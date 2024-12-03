@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 
 interface PROPS {
-  aiOutput?: string;
+  aiOutput?: string | null;
 }
 
 function OutputSection({ aiOutput }: PROPS) {
@@ -18,7 +18,10 @@ function OutputSection({ aiOutput }: PROPS) {
     <div className="bg-white shadow-lg border rounded">
       <div className="flex justify-between items-center p-5">
         <h2 className="font-medium text-lg">Your Result</h2>
-        <Button className="flex gap-2">
+        <Button
+          className="flex gap-2"
+          onClick={() => navigator.clipboard.writeText(aiOutput || "")}
+        >
           <Copy className="w-4 h-4" />
           Copy
         </Button>
